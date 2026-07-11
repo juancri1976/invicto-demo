@@ -8,9 +8,9 @@ import { ArrowRight, ShieldCheck, Zap, Layers, Trophy, Star } from "lucide-react
 export default function Home() {
   // Datos simulados actualizados apuntando a tus imágenes reales
   const clubesreales = [
-    { nombre: "Florida de Clusellas", liga: "Liga Regional", imagen: "/images/club1.jpg" },
+    { nombre: "Brown ", liga: "Liga Rafaelina", imagen: "/images/brown.png" },
     { nombre: "Peñarol Rafaela", liga: "Torneo Federal", imagen: "/images/club2.jpg" },
-    { nombre: "Tiro Moises Ville", liga: "Liga Comercial", imagen: "/images/club3.jpg" },
+    { nombre: "Florida de Clusellas", liga: "Liga Comercial", imagen: "/images/club1.jpg" },
     { nombre: "Sportivo Norte", liga: "Liga Rafaelina", imagen: "/images/club4.jpg" },
     { nombre: "Quilmes Rafaela", liga: "Liga Rafaelina", imagen: "/images/club5.jpg" },
     { nombre: "Sportivo 24 Septiembre", liga: "Arroyito CBA.", imagen: "/images/club6.jpg" },
