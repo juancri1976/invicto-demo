@@ -62,7 +62,7 @@ export default function TiendaClub() {
             {club.nombre}
           </h1>
           <p className="text-white/80 font-poppins text-sm md:text-base mt-2 flex items-center gap-2">
-            <Shield size={16} /> Tienda Oficial operada por Invicto
+            <Shield size={16} /> Tienda Oficial patrocinada por Invicto
           </p>
         </div>
       </div>
