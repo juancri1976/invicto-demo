@@ -26,14 +26,18 @@ export default function TiendaClub() {
       ]
     },
     // Podés agregar otro club de prueba acá si querés
-    central: {
-      nombre: "Club Central Argentino Olímpico",
-      siglas: "CCAO",
-      colorPrincipal: "bg-[#FDD835]", // Amarillo CCAO
+    huayna: {
+      nombre: "Tribu huayna ",
+      siglas: "HUAYNA",
+      colorPrincipal: "bg-[#E53935]", 
       colorTexto: "text-[#FDD835]",
-      logo: "/images/club2.jpg",
+      logo: "/images/huayna.png",
       productos: [
-        { id: 1, nombre: "Camiseta Titular CCAO", precio: "$35.000", tipo: "Juego", imagen: "/images/mockup.png", estrellas: 5 },
+        { id: 1, nombre: "Modelo 1", precio: "$35.000", tipo: "Juego", imagen: "/images/1.jpeg", estrellas: 5 },
+        { id: 2, nombre: "Modelo 2", precio: "$35.000", tipo: "Juego", imagen: "/images/2.jpeg", estrellas: 5 },
+        { id: 3, nombre: "Modelo 3", precio: "$35.000", tipo: "Juego", imagen: "/images/3.jpeg", estrellas: 4 },
+        { id: 4, nombre: "Modelo 4", precio: "$42.000", tipo: "Entrenamiento", imagen: "/images/4.jpeg", estrellas: 5 },
+        { id: 5, nombre: "Modelo 5", precio: "$42.000", tipo: "Entrenamiento", imagen: "/images/5.jpeg", estrellas: 5 },
       ]
     }
   };
