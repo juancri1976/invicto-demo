@@ -215,7 +215,7 @@ export default function Home() {
                 {/* Imagen del Mockup Flotando */}
                 <div className="relative w-48 h-56 transition-transform duration-700 ease-out group-hover:scale-105 group-hover:-translate-y-1 z-10">
                   <Image 
-                    src="/images/mockup.png" 
+                    src="/images/mockup2.png" 
                     alt="Preview Laboratorio 3D Invicto" 
                     fill 
                     className="object-contain filter drop-shadow-[0_15px_25px_rgba(0,0,0,0.7)]"
