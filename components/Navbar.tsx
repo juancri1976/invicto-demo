@@ -6,8 +6,9 @@ import { Search, User, ShoppingCart } from "lucide-react";
 
 export default function Navbar() {
   return (
+    // CAMBIO ACÁ: Reemplazamos border-invicto-magenta por border-black
     // Forzamos una altura limpia con h-20 para asegurar que el nav nunca cambie de tamaño
-    <nav className="bg-invicto-dark text-white px-6 md:px-12 flex items-center justify-between relative z-40 border-b-2 border-invicto-cyan shadow-md h-20">
+    <nav className="bg-invicto-dark text-white px-6 md:px-12 flex items-center justify-between relative z-40 border-b-2 border-black shadow-md h-20">
       
       {/* --- LOGO OFICIAL INVICTO (ESTILO FLOTANTE DESBORDADO) --- */}
       <div className="flex items-center">
@@ -35,23 +36,25 @@ export default function Navbar() {
 
       {/* Enlaces centrales */}
       <div className="hidden md:flex gap-8 font-poppins text-sm font-semibold uppercase tracking-wide">
-        <Link href="#" className="hover:text-invicto-cyan transition-colors">Fútbol</Link>
-        <Link href="#" className="hover:text-invicto-cyan transition-colors">Básquet</Link>
-        <Link href="/crear" className="text-invicto-cyan border-b-2 border-invicto-cyan pb-1">Creá tu diseño</Link>
-        <Link href="#" className="hover:text-invicto-cyan transition-colors">Contacto</Link>
+        <Link href="#" className="hover:text-invicto-magenta transition-colors">Fútbol</Link>
+        <Link href="#" className="hover:text-invicto-magenta transition-colors">Básquet</Link>
+        <Link href="#" className="hover:text-invicto-magenta transition-colors">Voley</Link>
+        <Link href="/catalogo" className="hover:text-invicto-magenta transition-colors">Catálogo</Link>
+        <Link href="/crear" className="text-invicto-magenta border-b-2 border-invicto-magenta pb-1">Creá tu diseño</Link>
+        <Link href="#" className="hover:text-invicto-magenta transition-colors">Contacto</Link>
       </div>
 
       {/* Iconos de acción derecha (Búsqueda, Usuario, Carrito) */}
       <div className="flex items-center gap-6">
-        <button className="hover:text-invicto-cyan transition-colors cursor-pointer" aria-label="Buscar">
+        <button className="hover:text-invicto-magenta transition-colors cursor-pointer" aria-label="Buscar">
           <Search size={20} />
         </button>
-        <button className="hover:text-invicto-cyan transition-colors cursor-pointer" aria-label="Perfil de usuario">
+        <button className="hover:text-invicto-magenta transition-colors cursor-pointer" aria-label="Perfil de usuario">
           <User size={20} />
         </button>
-        <button className="hover:text-invicto-cyan transition-colors cursor-pointer relative" aria-label="Carrito de compras">
+        <button className="hover:text-invicto-magenta transition-colors cursor-pointer relative" aria-label="Carrito de compras">
           <ShoppingCart size={20} />
-          <span className="absolute -top-1.5 -right-1.5 bg-invicto-cyan text-invicto-dark font-bold text-[10px] w-4 h-4 rounded-full flex items-center justify-center">
+          <span className="absolute -top-1.5 -right-1.5 bg-invicto-magenta text-invicto-dark font-bold text-[10px] w-4 h-4 rounded-full flex items-center justify-center">
             0
           </span>
         </button>

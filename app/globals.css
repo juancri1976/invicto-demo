@@ -2,7 +2,7 @@
 
 /* Acá le enseñamos a Tailwind nuestra identidad de marca Invicto */
 @theme {
-  --color-invicto-cyan: #00E5FF;
+  --color-invicto-magenta: #FF2BD6; /* <-- ¡Nuevo color oficial! */
   --color-invicto-dark: #111111;
   --color-invicto-light: #F8F9FA;
   

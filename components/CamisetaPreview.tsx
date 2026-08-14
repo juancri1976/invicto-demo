@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 
 export default function CamisetaPreview({ 
@@ -7,8 +9,9 @@ export default function CamisetaPreview({
   escudo = null,   
   sponsor = null,
   vista = "frente", 
-  nombre = "MESSI",
-  numero = "10"
+  nombre = "Tu Nombre",
+  numero = "10",
+  deporte = "Fútbol" // <--- NUEVO: Recibimos la disciplina
 }: { 
   colorPrincipal: string; 
   colorSecundario: string; 
@@ -18,13 +21,14 @@ export default function CamisetaPreview({
   vista?: "frente" | "espalda";
   nombre?: string;
   numero?: string;
+  deporte?: string; // <--- Añadimos el tipo acá
 }) {
   
   const getColorHex = (nombre: string): string => {
     const mapa: Record<string, string> = {
       'Blanco': '#FFFFFF', 'Negro': '#222222', 'Rojo': '#E53935', 'Azul': '#1E88E5',
       'Marino': '#1A237E', 'Celeste': '#03A9F4', 'Verde': '#43A047', 'Amarillo': '#FDD835',
-      'Naranja': '#FB8C00', 'Violeta': '#8E24AA', 'Bordó': '#880E4F', 'Cian': '#00E5FF',
+      'Naranja': '#FB8C00', 'Violeta': '#8E24AA', 'Bordó': '#880E4F', 'Cian': '#00E5FF', 'Magenta': '#FF2BD6'
     };
     return mapa[nombre] || '#FFFFFF';
   };
@@ -33,47 +37,79 @@ export default function CamisetaPreview({
   const cSecundario = getColorHex(colorSecundario);
 
   let tramaStyles: React.CSSProperties = {};
-  if (trama === "Bastones") {
+  
+  // --- GEOMÉTRICAS ---
+  if (trama === "Ajedrez") {
+    tramaStyles = { backgroundImage: `conic-gradient(from 270deg at 50% 50%, ${cSecundario} 90deg, transparent 0, transparent 180deg, ${cSecundario} 0, ${cSecundario} 270deg, transparent 0)`, backgroundSize: "60px 60px" };
+  } else if (trama === "Diamantes") {
+    tramaStyles = { backgroundImage: `linear-gradient(135deg, ${cSecundario} 25%, transparent 25%), linear-gradient(225deg, ${cSecundario} 25%, transparent 25%), linear-gradient(45deg, ${cSecundario} 25%, transparent 25%), linear-gradient(315deg, ${cSecundario} 25%, transparent 25%)`, backgroundPosition: `10px 0, 10px 0, 0 0, 0 0`, backgroundSize: `20px 20px`, opacity: 0.6 };
+  } else if (trama === "Triángulos") {
+    const svgTriang = encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'><polygon points='15,0 30,30 0,30' fill='${cSecundario}' fill-opacity='0.25'/></svg>`);
+    tramaStyles = { backgroundImage: `url("data:image/svg+xml;utf8,${svgTriang}")`, backgroundSize: '30px 30px' };
+  } else if (trama === "Polígonos") {
+    tramaStyles = { backgroundImage: `linear-gradient(45deg, ${cSecundario} 25%, transparent 25%), linear-gradient(-45deg, ${cSecundario} 25%, transparent 25%), linear-gradient(135deg, ${cSecundario} 25%, transparent 25%), linear-gradient(-135deg, ${cSecundario} 25%, transparent 25%)`, backgroundSize: '40px 40px', opacity: 0.4 };
+  }
+  
+  // --- LÍNEAS ---
+  else if (trama === "Bastones") {
     tramaStyles = { backgroundImage: `repeating-linear-gradient(90deg, transparent, transparent 30px, ${cSecundario} 30px, ${cSecundario} 60px)` };
   } else if (trama === "Aros") {
     tramaStyles = { backgroundImage: `repeating-linear-gradient(0deg, transparent, transparent 30px, ${cSecundario} 30px, ${cSecundario} 60px)` };
-  } else if (trama === "Ajedrez") {
-    tramaStyles = { 
-      backgroundImage: `conic-gradient(from 270deg at 50% 50%, ${cSecundario} 90deg, transparent 0, transparent 180deg, ${cSecundario} 0, ${cSecundario} 270deg, transparent 0)`,
-      backgroundSize: "60px 60px" 
-    };
   } else if (trama === "Mitad") {
     tramaStyles = { backgroundImage: `linear-gradient(90deg, transparent 50%, ${cSecundario} 50%)` };
-  } else if (trama === "Puntos") {
-    tramaStyles = { 
-      backgroundImage: `radial-gradient(${cSecundario} 3px, transparent 4px)`,
-      backgroundSize: "20px 20px" 
-    };
-  } 
-  // --- TRAMAS PREMIUM AGREGADAS ---
-  else if (trama === "Panal") {
-    // Patrón de Hexágonos inyectados mediante SVG dinámico
-    const svgPanal = encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'><g fill='${cSecundario}' fill-opacity='0.5'><path d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.65V49h-2z'/></g></svg>`);
-    tramaStyles = { backgroundImage: `url("data:image/svg+xml;utf8,${svgPanal}")` };
-  } 
-  else if (trama === "Diamantes") {
-    tramaStyles = {
-      backgroundImage: `linear-gradient(135deg, ${cSecundario} 25%, transparent 25%), linear-gradient(225deg, ${cSecundario} 25%, transparent 25%), linear-gradient(45deg, ${cSecundario} 25%, transparent 25%), linear-gradient(315deg, ${cSecundario} 25%, transparent 25%)`,
-      backgroundPosition: `10px 0, 10px 0, 0 0, 0 0`,
-      backgroundSize: `20px 20px`,
-      opacity: 0.7
-    };
+  } else if (trama === "Líneas Finas") {
+    tramaStyles = { backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 10px, ${cSecundario} 10px, ${cSecundario} 12px)`, opacity: 0.7 };
   }
-  else if (trama === "ZigZag") {
-    tramaStyles = {
-      backgroundImage: `linear-gradient(135deg, ${cSecundario} 25%, transparent 25%) -10px 0, linear-gradient(225deg, ${cSecundario} 25%, transparent 25%) -10px 0, linear-gradient(315deg, ${cSecundario} 25%, transparent 25%), linear-gradient(45deg, ${cSecundario} 25%, transparent 25%)`,
-      backgroundSize: `20px 20px`,
-      opacity: 0.6
-    };
+  
+  // --- FUTURISTAS ---
+  else if (trama === "Panal") {
+    const svgPanal = encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'><g fill='${cSecundario}' fill-opacity='0.4'><path d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9z'/></g></svg>`);
+    tramaStyles = { backgroundImage: `url("data:image/svg+xml;utf8,${svgPanal}")` };
+  } else if (trama === "Digital Camo") {
+    const svgCamo = encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'><rect width='20' height='20' fill='${cSecundario}' fill-opacity='0.3'/><rect x='20' y='20' width='10' height='10' fill='${cSecundario}' fill-opacity='0.5'/><rect x='10' y='30' width='10' height='10' fill='${cSecundario}' fill-opacity='0.2'/></svg>`);
+    tramaStyles = { backgroundImage: `url("data:image/svg+xml;utf8,${svgCamo}")` };
+  } else if (trama === "Cyberpunk") {
+    tramaStyles = { backgroundImage: `linear-gradient(90deg, ${cSecundario} 4px, transparent 4px), linear-gradient(0deg, ${cSecundario} 4px, transparent 4px)`, backgroundSize: '40px 40px', opacity: 0.3 };
+  } else if (trama === "Matriz") {
+    tramaStyles = { backgroundImage: `radial-gradient(${cSecundario} 2px, transparent 3px)`, backgroundSize: "15px 30px", opacity: 0.8 };
+  }
+  
+  // --- STREET ---
+  else if (trama === "Graffiti") {
+    tramaStyles = { backgroundImage: `repeating-radial-gradient(circle at 0 0, transparent, transparent 20px, ${cSecundario} 20px, ${cSecundario} 24px)`, opacity: 0.4 };
+  } else if (trama === "Manchas") {
+    tramaStyles = { backgroundImage: `radial-gradient(circle at 50% 50%, ${cSecundario} 40%, transparent 41%), radial-gradient(circle at 0 0, ${cSecundario} 20%, transparent 21%)`, backgroundSize: '50px 50px', opacity: 0.3 };
+  } else if (trama === "Salpicado") {
+    tramaStyles = { backgroundImage: `radial-gradient(circle at 20% 30%, ${cSecundario} 10%, transparent 12%), radial-gradient(circle at 75% 60%, ${cSecundario} 8%, transparent 10%)`, backgroundSize: '30px 30px', opacity: 0.6 };
+  } else if (trama === "Urbano") {
+    tramaStyles = { backgroundImage: `linear-gradient(45deg, ${cSecundario} 12%, transparent 12%), linear-gradient(-45deg, ${cSecundario} 12%, transparent 12%)`, backgroundSize: '20px 20px', opacity: 0.5 };
+  }
+  
+  // --- GRAVITACIÓN ---
+  else if (trama === "Degradé") {
+    tramaStyles = { backgroundImage: `linear-gradient(to bottom, ${cSecundario}, transparent)`, opacity: 0.6 };
+  } else if (trama === "Ondas") {
+    const svgOndas = encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='60' height='30' viewBox='0 0 60 30'><path d='M0 15 Q 15 0, 30 15 T 60 15' fill='none' stroke='${cSecundario}' stroke-width='4' stroke-opacity='0.4'/></svg>`);
+    tramaStyles = { backgroundImage: `url("data:image/svg+xml;utf8,${svgOndas}")`, backgroundSize: '60px 30px' };
+  } else if (trama === "Líneas Fugaces") {
+    tramaStyles = { backgroundImage: `linear-gradient(115deg, transparent 40%, ${cSecundario} 40%, ${cSecundario} 45%, transparent 45%)`, backgroundSize: '60px 100px', opacity: 0.5 };
+  } else if (trama === "Vórtice") {
+    tramaStyles = { backgroundImage: `repeating-radial-gradient(circle at center, transparent, transparent 15px, ${cSecundario} 15px, ${cSecundario} 20px)`, opacity: 0.3 };
   }
 
-  // --- LÓGICA DE FRENTE/ESPALDA ---
-  const imagenMockup = vista === "frente" ? "/images/mockup.png" : "/images/mockup-back.png";
+  // --- LÓGICA DE FRENTE/ESPALDA Y DISCIPLINA DEPORTIVA ---
+  let imagenMockup = "/images/mockup2.png"; // Defecto para Frente de Fútbol
+
+  if (vista === "frente") {
+    if (deporte === "Básquet") imagenMockup = "/images/mockup-basquet2.png";
+    else if (deporte === "Vóley") imagenMockup = "/images/mockup-voley.png";
+    else imagenMockup = "/images/mockup2.png";
+  } else {
+    // Si la vista es ESPALDA
+    if (deporte === "Básquet") imagenMockup = "/images/mockup-basquet-back.png";
+    else if (deporte === "Vóley") imagenMockup = "/images/mockup-voley-back.png";
+    else imagenMockup = "/images/mockup-back2.png";
+  }
 
   const maskStyle = {
     WebkitMaskImage: `url('${imagenMockup}')`,
@@ -133,7 +169,7 @@ export default function CamisetaPreview({
 
       {/* Etiqueta flotante premium */}
       <div className="absolute top-0 right-4 flex items-center gap-2 z-30">
-         <span className="bg-invicto-dark text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest shadow-md">
+         <span className="bg-invicto-magenta text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest shadow-[0_0_10px_rgba(255,43,214,0.3)]">
            Calidad Pro
          </span>
       </div>
