@@ -107,7 +107,7 @@ export default function CamisetaPreview({
   } else {
     // Si la vista es ESPALDA
     if (deporte === "Básquet") imagenMockup = "/images/mockup-basquet-back.png";
-    else if (deporte === "Vóley") imagenMockup = "/images/mockup-voley-back.png";
+    else if (deporte === "Vóley") imagenMockup = "/images/voley-back.png";
     else imagenMockup = "/images/mockup-back2.png";
   }
 
