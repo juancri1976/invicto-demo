@@ -8,16 +8,18 @@ import { ArrowRight, Hexagon } from "lucide-react";
 
 // Base de datos de productos (Mockup)
 const productos = [
-  { id: 1, nombre: 'Camiseta Elite Pro', categoria: 'Camisetas', deporte: 'Fútbol', tech: 'DRY-FIT', img: '/images/cat1.jpeg' },
+  { id: 1, nombre: 'Camiseta Elite Pro', categoria: 'Camisetas', deporte: 'Fútbol', tech: 'DRY-FIT', img: '/images/cat111.jpeg' },
   { id: 2, nombre: 'Musculosa Court 360', categoria: 'Camisetas', deporte: 'Básquet', tech: 'AERO-MESH', img: '/images/cat2.jpeg' },
   { id: 3, nombre: 'Camiseta Spike', categoria: 'Camisetas', deporte: 'Vóley', tech: 'FLEX-SPANDEX', img: '/images/cat3.jpeg' },
   { id: 4, nombre: 'Conjunto Deportivo Track', categoria: 'Conjuntos', deporte: 'Entrenamiento', tech: 'THERMO-FLEX', img: '/images/conjunto.jpg' },
-  { id: 5, nombre: 'Camperón Stadium', categoria: 'Abrigo', deporte: 'General', tech: 'WIND-PROOF', img: '/images/cat4.jpg' }, // Podés usar cualquier foto genérica mientras tanto
+  { id: 5, nombre: 'Musculosa', categoria: 'Camisetas', deporte: 'General', tech: 'COTTON', img: '/images/cat14.jpeg' }, // Podés usar cualquier foto genérica mientras tanto
   { id: 6, nombre: 'Buzo Hoodie Urbano', categoria: 'Abrigo', deporte: 'Street', tech: 'COTTON-BLEND', img: '/images/cat5.png' },
   { id: 7, nombre: 'Medias Pro-Grip', categoria: 'Accesorios', deporte: 'Fútbol / General', tech: 'ANTI-SLIP', img: '/images/media.jpg' },
   { id: 8, nombre: 'Remera Retro', categoria: 'General', deporte: 'Historica', tech: 'ULTRA-STRETCH', img: '/images/cat6.jpeg' },
-  { id: 9, nombre: 'Gorra Trucker Invicto', categoria: 'Accesorios', deporte: 'Street', tech: 'MESH-BACK', img: '/images/cat7.jpg' },
-  { id: 10, nombre: 'Mochila Botinera Squad', categoria: 'Accesorios', deporte: 'General', tech: 'WATER-PROOF', img: '/images/cat8.jpg' },
+  { id: 9, nombre: 'Gorra Trucker Invicto', categoria: 'Accesorios', deporte: 'Street', tech: 'MESH-BACK', img: '/images/cat7a.jpeg' },
+  { id: 10, nombre: 'Mochila Personalizada', categoria: 'Accesorios', deporte: 'General', tech: 'WATER-PROOF', img: '/images/cat8a.jpeg' },
+  { id: 11, nombre: 'Rompeviento', categoria: 'Abrigo', deporte: 'Street', tech: 'WIND-PROOF', img: '/images/cat11.jpeg' },
+  { id: 12, nombre: 'Conjunto Deportivo', categoria: 'Conjuntos', deporte: 'General', tech: 'COTTON-BLENDF', img: '/images/cat20.jpg' },
 ];
 
 const categorias = ["Todos", "Camisetas", "Conjuntos", "Abrigo", "Accesorios"];
