@@ -46,7 +46,7 @@ export default function Configurador() {
 
   // Función para enviar a WhatsApp
   const enviarPedidoWhatsApp = () => {
-    const numeroDeVentas = "549XXXXXXXXX"; // <-- ACÁ PONÉ TU NÚMERO DE WHATSAPP
+    const numeroDeVentas = "5493492628261"; // <-- ACÁ PONÉ TU NÚMERO DE WHATSAPP
     
     const texto = `¡Hola Invicto! Acabo de armar un diseño en su Laboratorio 3D y quiero cotizarlo:%0A%0A` +
       `*DEPORTE:* ${pedido.deporte}%0A` +
