@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero"; 
 import Link from "next/link";
@@ -9,10 +10,32 @@ import {
   Zap, 
   Layers, 
   Trophy, 
-  Star
+  Star,
+  X // Importamos el ícono X para cerrar el pop-up
 } from "lucide-react";
 
 export default function Home() {
+  // Estados para controlar el Pop-up de Octubre Rosa
+  const [mostrarPromo, setMostrarPromo] = useState(false);
+
+  useEffect(() => {
+    // Retrasamos la aparición 1.5 segundos para que sea más natural
+    const timer = setTimeout(() => {
+      // Verificamos si ya la vio en esta sesión para no ser spam
+      const yaVioPromo = sessionStorage.getItem("promoOctubreVista");
+      if (!yaVioPromo) {
+        setMostrarPromo(true);
+      }
+    }, 1500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const cerrarPromo = () => {
+    setMostrarPromo(false);
+    sessionStorage.setItem("promoOctubreVista", "true");
+  };
+
   const clubesreales = [
     { nombre: "Club Atlético Brown ", liga: "San Vicente", imagen: "/images/brown.png" },
     { nombre: "Club Peñarol ", liga: "Rafaela", imagen: "/images/pena.jpg" },
@@ -24,8 +47,39 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-invicto-light text-invicto-dark font-poppins">
+    <div className="min-h-screen bg-invicto-light text-invicto-dark font-poppins relative">
       <Navbar />
+
+      {/* --- MODAL OCTUBRE ROSA --- */}
+      {mostrarPromo && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-12 bg-black/80 backdrop-blur-sm animate-in fade-in duration-500">
+          <div className="relative w-full max-w-5xl bg-[#0A0A0A] rounded-2xl overflow-hidden border border-pink-500/30 shadow-[0_0_50px_rgba(255,43,214,0.2)] animate-in zoom-in-95 duration-500">
+            
+            {/* Botón Cerrar */}
+            <button 
+              onClick={cerrarPromo}
+              className="absolute top-4 right-4 z-20 bg-black/60 hover:bg-pink-600 text-white p-2 rounded-full backdrop-blur-md transition-colors shadow-lg cursor-pointer"
+              aria-label="Cerrar publicidad"
+            >
+              <X size={24} />
+            </button>
+
+            {/* Imagen clickeable que lleva al catálogo */}
+            <Link href="/promo" onClick={cerrarPromo} className="block relative w-full aspect-[16/9] md:aspect-[21/9] group bg-black">
+              <Image 
+                src="/images/rosa.png" 
+                alt="Octubre Rosa - Invicto Indumentaria" 
+                fill 
+                className="object-cover md:object-contain transition-transform duration-700 group-hover:scale-[1.02]"
+                priority
+              />
+              {/* Overlay sutil al pasar el mouse */}
+              <div className="absolute inset-0 bg-white/0 group-hover:bg-white/5 transition-colors duration-300 pointer-events-none"></div>
+            </Link>
+          </div>
+        </div>
+      )}
+      {/* --------------------------- */}
 
       {/* 1. HERO SECTION DINÁMICO */}
       <Hero />
