@@ -6,7 +6,7 @@ import { MessageCircle, Heart, ShieldCheck, Shirt } from "lucide-react";
 
 export default function PromoPage() {
   const enviarPromoWhatsApp = () => {
-    const numeroDeVentas = "549XXXXXXXXX"; // <-- ACÁ PONÉ TU NÚMERO DE WHATSAPP
+    const numeroDeVentas = "5493492628261"; // <-- ACÁ PONÉ TU NÚMERO DE WHATSAPP
     const texto = `¡Hola Invicto! Vengo de la web y me interesa la edición especial OCTUBRE ROSA para mi equipo. ¿Me podrían pasar más info y presupuesto?`;
     window.open(`https://wa.me/${numeroDeVentas}?text=${texto}`, '_blank');
   };
@@ -70,7 +70,7 @@ export default function PromoPage() {
                     <Shirt size={24} />
                   </div>
                   <div>
-                    <h4 className="text-white font-bold text-xl mb-2">Dos diseños exclusivos</h4>
+                    <h4 className="text-white font-bold text-xl mb-2">Diseños Exclusivo</h4>
                     <p className="text-gray-400 text-sm leading-relaxed">Elige entre el modelo de franjas anchas o el diseño de líneas finas. Disponibles en moldería anatómica Masculina y Femenina para todo el plantel.</p>
                   </div>
                 </div>
@@ -81,7 +81,7 @@ export default function PromoPage() {
                   </div>
                   <div>
                     <h4 className="text-white font-bold text-xl mb-2">Personalización Total</h4>
-                    <p className="text-gray-400 text-sm leading-relaxed">Sublimamos el escudo de tu club, nombre de cada jugador, números y todos tus sponsors sin costo extra.</p>
+                    <p className="text-gray-400 text-sm leading-relaxed">Agregamos el escudo de tu club, nombre de cada jugador, números y todos tus sponsors sin costo extra.</p>
                   </div>
                 </div>
               </div>
