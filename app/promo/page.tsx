@@ -27,7 +27,7 @@ export default function PromoPage() {
             OCTUBRE <span className="text-pink-500">ROSA</span>
           </h1>
           <p className="font-poppins text-gray-400 text-lg max-w-2xl mx-auto">
-            Homenaje a la lucha contra el cáncer de mama. Juguemos juntos el partido más importante.
+            Homenaje a la lucha contra el cáncer de mama. Juguemos juntos, pedila para tu Club.
           </p>
         </div>
 

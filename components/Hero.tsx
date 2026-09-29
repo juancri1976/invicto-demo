@@ -106,8 +106,8 @@ export default function Hero() {
 
           {/* Subtítulo */}
           <p className="font-poppins text-gray-400 text-base md:text-lg max-w-xl mb-10 leading-relaxed font-normal drop-shadow-md cursor-default">
-            Fábrica de indumentaria deportiva premium. 
-            Configurá colores, tramas futuristas, sponsors y dorsales en tiempo real con calidad profesional certificada.
+            Somos una marca líder en Rafaela y la región, nos dedicamos a la fabricación de indumentaria deportiva. 
+            Tu equipo, tu camiseta, tu diseño. Diseña en tiempo real con calidad profesional certificada.
           </p>
 
           {/* Botones de Acción */}
