@@ -318,8 +318,11 @@ export default function Home() {
           {/* GRILLA DE IMÁGENES CON TEXTO INTEGRADO */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             
-            {/* Artículo 1 */}
-            <div className="relative w-full h-[350px] md:h-[450px] rounded-2xl overflow-hidden shadow-md group cursor-pointer border-2 border-transparent hover:border-invicto-dark/50 transition-colors duration-300">
+            {/* Artículo 1 conectado a /tu-tienda */}
+            <Link 
+              href="/tu-tienda" 
+              className="relative w-full h-[350px] md:h-[450px] rounded-2xl overflow-hidden shadow-md group cursor-pointer border-2 border-transparent hover:border-invicto-magenta/50 transition-colors duration-300 block"
+            >
               <Image 
                 src="/images/tienda.png" 
                 alt="Tienda Online Invicto" 
@@ -329,14 +332,14 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500"></div>
               
               <div className="absolute bottom-0 left-0 w-full p-6 z-10 flex flex-col justify-end transform transition-transform duration-500 group-hover:-translate-y-2">
-                <h3 className="font-oswald text-2xl font-bold text-white uppercase leading-tight mb-2 group-hover:text-gray-300 transition-colors">
+                <h3 className="font-oswald text-2xl font-bold text-white uppercase leading-tight mb-2 group-hover:text-invicto-magenta transition-colors">
                   Tu propia Tienda Online
                 </h3>
                 <p className="font-poppins text-sm text-gray-300 line-clamp-3">
                   Eleginos como sponsor técnico de la temporada, y te creamos tu propia tienda para que venda toda la indumentaria oficial de tu club! ®️
                 </p>
               </div>
-            </div>
+            </Link>
 
             {/* Artículo 2 (Actualizado a Marca Registrada) */}
             <div className="relative w-full h-[350px] md:h-[450px] rounded-2xl overflow-hidden shadow-md group cursor-pointer border-2 border-transparent hover:border-invicto-dark/50 transition-colors duration-300">

@@ -6,7 +6,6 @@ import { Search, User, ShoppingCart } from "lucide-react";
 
 export default function Navbar() {
   return (
-    // CAMBIO ACÁ: Reemplazamos border-invicto-magenta por border-black
     // Forzamos una altura limpia con h-20 para asegurar que el nav nunca cambie de tamaño
     <nav className="bg-invicto-dark text-white px-6 md:px-12 flex items-center justify-between relative z-40 border-b-2 border-black shadow-md h-20">
       
@@ -14,7 +13,7 @@ export default function Navbar() {
       <div className="flex items-center">
         <Link href="/" className="flex items-center group relative h-20">
           
-          {/* Contenedor del logo: Ahora es w-28 h-28 (el DOBLE de grande) o w-32 h-32 en pc */}
+          {/* Contenedor del logo: w-28 h-28 o w-32 h-32 en pc */}
           {/* El uso de absolute, top-1/2 y -translate-y-1/2 evita que deforme la barra */}
           <div className="absolute left-0 top-1/2 -translate-y-1/2 w-28 h-28 md:w-32 md:h-32 transition-transform duration-300 group-hover:scale-105 filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.5)] z-50">
             <Image 
@@ -26,22 +25,26 @@ export default function Navbar() {
             />
           </div>
 
-          {/* ESPACIADOR INVISIBLE: Como el logo flota de forma absoluta, dejamos este hueco en el flex */}
-          {/* para que el texto "Invicto" se acomode al lado perfecto y no quede tapado de fondo */}
+          {/* ESPACIADOR INVISIBLE */}
           <div className="w-24 md:w-28 h-full pointer-events-none"></div>
-          
           
         </Link>
       </div>
 
-      {/* Enlaces centrales */}
-      <div className="hidden md:flex gap-8 font-poppins text-sm font-semibold uppercase tracking-wide">
-        <Link href="#" className="hover:text-invicto-magenta transition-colors">Fútbol</Link>
-        <Link href="#" className="hover:text-invicto-magenta transition-colors">Básquet</Link>
-        <Link href="#" className="hover:text-invicto-magenta transition-colors">Voley</Link>
-        <Link href="/catalogo" className="hover:text-invicto-magenta transition-colors">Catálogo</Link>
-        <Link href="/crear" className="text-invicto-magenta border-b-2 border-invicto-magenta pb-1">Creá tu diseño</Link>
-        <Link href="#" className="hover:text-invicto-magenta transition-colors">Contacto</Link>
+      {/* Enlaces centrales actualizados */}
+      <div className="hidden md:flex items-center gap-8 font-poppins text-sm font-semibold uppercase tracking-wide">
+        <Link href="/catalogo" className="hover:text-invicto-magenta transition-colors">
+          Catálogo
+        </Link>
+        <Link href="/crear" className="text-invicto-magenta border-b-2 border-invicto-magenta pb-1">
+          Creá tu diseño
+        </Link>
+        <Link href="/tu-tienda" className="hover:text-invicto-magenta transition-colors">
+          Tu Tienda
+        </Link>
+        <Link href="#contacto" className="hover:text-invicto-magenta transition-colors">
+          Contacto
+        </Link>
       </div>
 
       {/* Iconos de acción derecha (Búsqueda, Usuario, Carrito) */}
