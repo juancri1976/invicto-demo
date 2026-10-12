@@ -88,7 +88,7 @@ export default function Home() {
       <section className="py-20 max-w-7xl mx-auto px-4 md:px-12">
         <div className="text-center mb-16">
           <h2 className="font-oswald text-3xl md:text-5xl font-bold uppercase text-invicto-dark mb-4">
-            El estándar profesional para tu club
+            Indumentaria profesional para tu club
           </h2>
           <p className="text-gray-500 max-w-2xl mx-auto font-medium">
             A través de un sistema de alto nivel, vestimos tu pasión.
