@@ -12,7 +12,7 @@ const productos = [
   { id: 2, nombre: 'Musculosa Court 360', categoria: 'Camisetas', deporte: 'Básquet', tech: 'AERO-MESH', img: '/images/cat2.jpeg' },
   { id: 3, nombre: 'Camiseta Spike', categoria: 'Camisetas', deporte: 'Vóley', tech: 'FLEX-SPANDEX', img: '/images/cat3.jpeg' },
   { id: 4, nombre: 'Conjunto Deportivo Track', categoria: 'Conjuntos', deporte: 'Entrenamiento', tech: 'THERMO-FLEX', img: '/images/conjunto.jpg' },
-  { id: 5, nombre: 'Musculosa', categoria: 'Camisetas', deporte: 'General', tech: 'COTTON', img: '/images/cat14.jpeg' }, // Podés usar cualquier foto genérica mientras tanto
+  { id: 5, nombre: 'Musculosa', categoria: 'Camisetas', deporte: 'Hockey', tech: 'FLEX-SPANDEX', img: '/images/cat14.jpg' }, // Podés usar cualquier foto genérica mientras tanto
   { id: 6, nombre: 'Buzo Hoodie Urbano', categoria: 'Abrigo', deporte: 'Street', tech: 'COTTON-BLEND', img: '/images/cat5.png' },
   { id: 7, nombre: 'Medias Pro-Grip', categoria: 'Accesorios', deporte: 'Fútbol / General', tech: 'ANTI-SLIP', img: '/images/media.jpg' },
   { id: 8, nombre: 'Remera Retro', categoria: 'General', deporte: 'Historica', tech: 'ULTRA-STRETCH', img: '/images/cat6.jpeg' },
