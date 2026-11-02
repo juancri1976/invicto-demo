@@ -1,6 +1,5 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero"; 
 import Link from "next/link";
@@ -10,32 +9,10 @@ import {
   Zap, 
   Layers, 
   Trophy, 
-  Star,
-  X // Importamos el ícono X para cerrar el pop-up
+  Star
 } from "lucide-react";
 
 export default function Home() {
-  // Estados para controlar el Pop-up de Octubre Rosa
-  const [mostrarPromo, setMostrarPromo] = useState(false);
-
-  useEffect(() => {
-    // Retrasamos la aparición 1.5 segundos para que sea más natural
-    const timer = setTimeout(() => {
-      // Verificamos si ya la vio en esta sesión para no ser spam
-      const yaVioPromo = sessionStorage.getItem("promoOctubreVista");
-      if (!yaVioPromo) {
-        setMostrarPromo(true);
-      }
-    }, 1500);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  const cerrarPromo = () => {
-    setMostrarPromo(false);
-    sessionStorage.setItem("promoOctubreVista", "true");
-  };
-
   const clubesreales = [
     { nombre: "Club Atlético Brown ", liga: "San Vicente", imagen: "/images/brown.png" },
     { nombre: "Club Peñarol ", liga: "Rafaela", imagen: "/images/pena.jpg" },
@@ -50,37 +27,6 @@ export default function Home() {
     <div className="min-h-screen bg-invicto-light text-invicto-dark font-poppins relative">
       <Navbar />
 
-      {/* --- MODAL OCTUBRE ROSA --- */}
-      {mostrarPromo && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-12 bg-black/80 backdrop-blur-sm animate-in fade-in duration-500">
-          <div className="relative w-full max-w-5xl bg-[#0A0A0A] rounded-2xl overflow-hidden border border-pink-500/30 shadow-[0_0_50px_rgba(255,43,214,0.2)] animate-in zoom-in-95 duration-500">
-            
-            {/* Botón Cerrar */}
-            <button 
-              onClick={cerrarPromo}
-              className="absolute top-4 right-4 z-20 bg-black/60 hover:bg-pink-600 text-white p-2 rounded-full backdrop-blur-md transition-colors shadow-lg cursor-pointer"
-              aria-label="Cerrar publicidad"
-            >
-              <X size={24} />
-            </button>
-
-            {/* Imagen clickeable que lleva al catálogo */}
-            <Link href="/promo" onClick={cerrarPromo} className="block relative w-full aspect-[16/9] md:aspect-[21/9] group bg-black">
-              <Image 
-                src="/images/rosa.png" 
-                alt="Octubre Rosa - Invicto Indumentaria" 
-                fill 
-                className="object-cover md:object-contain transition-transform duration-700 group-hover:scale-[1.02]"
-                priority
-              />
-              {/* Overlay sutil al pasar el mouse */}
-              <div className="absolute inset-0 bg-white/0 group-hover:bg-white/5 transition-colors duration-300 pointer-events-none"></div>
-            </Link>
-          </div>
-        </div>
-      )}
-      {/* --------------------------- */}
-
       {/* 1. HERO SECTION DINÁMICO */}
       <Hero />
 
@@ -88,7 +34,7 @@ export default function Home() {
       <section className="py-20 max-w-7xl mx-auto px-4 md:px-12">
         <div className="text-center mb-16">
           <h2 className="font-oswald text-3xl md:text-5xl font-bold uppercase text-invicto-dark mb-4">
-            Indumentaria profesional para tu club
+            El estándar profesional para tu club
           </h2>
           <p className="text-gray-500 max-w-2xl mx-auto font-medium">
             A través de un sistema de alto nivel, vestimos tu pasión.
@@ -222,14 +168,12 @@ export default function Home() {
             </div>
           </div>
           
-          {/* TARJETA LABORATORIO 3D RENOVADA */}
+          {/* TARJETA LABORATORIO 3D */}
           <div className="lg:w-1/2 w-full">
             <div className="bg-[#0A0A0A] p-8 md:p-10 rounded-3xl text-center shadow-2xl relative overflow-hidden border border-white/10 group">
               
-              {/* Glow Magenta suave de fondo */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-invicto-magenta/15 rounded-full blur-3xl pointer-events-none group-hover:bg-invicto-magenta/25 transition-all duration-700"></div>
 
-              {/* Encabezado de la Tarjeta */}
               <div className="relative z-10">
                 <span className="text-[10px] font-mono font-bold text-invicto-magenta bg-invicto-magenta/10 border border-invicto-magenta/20 px-3 py-1 rounded-full uppercase tracking-widest inline-block mb-3">
                   Configurador Pro
@@ -242,10 +186,8 @@ export default function Home() {
                 </p>
               </div>
 
-              {/* Visor de Estudio 3D (Simulador de pantalla del creador) */}
               <div className="relative w-full h-[280px] bg-black/60 rounded-2xl border border-white/10 p-4 mb-8 flex items-center justify-center overflow-hidden backdrop-blur-sm group-hover:border-invicto-magenta/40 transition-colors duration-500">
                 
-                {/* Grilla de fondo del visor */}
                 <div 
                   className="absolute inset-0 opacity-10 pointer-events-none"
                   style={{
@@ -254,19 +196,16 @@ export default function Home() {
                   }}
                 />
 
-                {/* Punteros de Enfoque de Cámara (Esquinas Técnicas) */}
                 <div className="absolute top-3 left-3 w-3 h-3 border-t-2 border-l-2 border-invicto-magenta/60"></div>
                 <div className="absolute top-3 right-3 w-3 h-3 border-t-2 border-r-2 border-invicto-magenta/60"></div>
                 <div className="absolute bottom-3 left-3 w-3 h-3 border-b-2 border-l-2 border-invicto-magenta/60"></div>
                 <div className="absolute bottom-3 right-3 w-3 h-3 border-b-2 border-r-2 border-invicto-magenta/60"></div>
 
-                {/* Tag de Rendimiento en vivo */}
                 <div className="absolute top-3 left-8 flex items-center gap-1.5 font-mono text-[10px] text-gray-400 uppercase tracking-wider">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
                   RENDER 60 FPS
                 </div>
 
-                {/* Imagen del Mockup Flotando */}
                 <div className="relative w-48 h-56 transition-transform duration-700 ease-out group-hover:scale-105 group-hover:-translate-y-1 z-10">
                   <Image 
                     src="/images/mockup2.png" 
@@ -276,7 +215,6 @@ export default function Home() {
                   />
                 </div>
 
-                {/* Paleta de Colores Simulada (Inferior) */}
                 <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-white/10 px-3 py-1.5 rounded-full border border-white/10 backdrop-blur-md z-20">
                   <span className="w-3 h-3 rounded-full bg-invicto-magenta ring-2 ring-white/50"></span>
                   <span className="w-3 h-3 rounded-full bg-blue-500"></span>
@@ -286,7 +224,6 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Botón de Acción */}
               <Link 
                 href="/crear" 
                 className="relative z-10 w-full block bg-white text-invicto-dark font-oswald font-bold text-lg py-4 rounded-xl transition-all duration-300 group-hover:bg-invicto-magenta group-hover:text-invicto-dark group-hover:shadow-[0_0_25px_rgba(255,43,214,0.4)]"
@@ -299,7 +236,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. SECCIÓN ARTÍCULOS (Estilo Editorial / Revista Limpio) */}
+      {/* 5. SECCIÓN ARTÍCULOS */}
       <section className="py-20 bg-gray-50 border-t border-gray-200/60">
         <div className="max-w-7xl mx-auto px-4 md:px-12">
           
@@ -312,16 +249,14 @@ export default function Home() {
                 SIEMPRE <span className="text-invicto-dark">INVICTO</span>
               </h2>
             </div>
-            
           </div>
 
-          {/* GRILLA DE IMÁGENES CON TEXTO INTEGRADO */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             
-            {/* Artículo 1 conectado a /tu-tienda */}
+            {/* Artículo 1: Tu propia Tienda Online */}
             <Link 
-              href="/tu-tienda" 
-              className="relative w-full h-[350px] md:h-[450px] rounded-2xl overflow-hidden shadow-md group cursor-pointer border-2 border-transparent hover:border-invicto-magenta/50 transition-colors duration-300 block"
+              href="/tu-tienda"
+              className="relative w-full h-[350px] md:h-[450px] rounded-2xl overflow-hidden shadow-md group cursor-pointer border-2 border-transparent hover:border-invicto-magenta/60 transition-colors duration-300 block"
             >
               <Image 
                 src="/images/tienda.png" 
@@ -341,7 +276,7 @@ export default function Home() {
               </div>
             </Link>
 
-            {/* Artículo 2 (Actualizado a Marca Registrada) */}
+            {/* Artículo 2: Marca Registrada */}
             <div className="relative w-full h-[350px] md:h-[450px] rounded-2xl overflow-hidden shadow-md group cursor-pointer border-2 border-transparent hover:border-invicto-dark/50 transition-colors duration-300">
               <Image 
                 src="/images/media.jpg" 
@@ -356,12 +291,12 @@ export default function Home() {
                   Marca Registrada
                 </h3>
                 <p className="font-poppins text-sm text-gray-300 line-clamp-3">
-                 Oficialmente tenemos el derecho exclusivo sobre nuestra marca el cual nos consolida como empresa y nos permite seguir ofreciendo credibilidad, confianza y calidad en todos nuestros productos. Nº REG. 3.703.814
+                  Oficialmente tenemos el derecho exclusivo sobre nuestra marca el cual nos consolida como empresa y nos permite seguir ofreciendo credibilidad, confianza y calidad en todos nuestros productos. Nº REG. 3.703.814
                 </p>
               </div>
             </div>
 
-            {/* Artículo 3 */}
+            {/* Artículo 3: Impresión por sublimación */}
             <div className="relative w-full h-[350px] md:h-[450px] rounded-2xl overflow-hidden shadow-md group cursor-pointer border-2 border-transparent hover:border-invicto-dark/50 transition-colors duration-300">
               <Image 
                 src="/images/impresora.jpg" 
@@ -381,7 +316,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Artículo 4 */}
+            {/* Artículo 4: Vestimos tu pasión */}
             <div className="relative w-full h-[350px] md:h-[450px] rounded-2xl overflow-hidden shadow-md group cursor-pointer border-2 border-transparent hover:border-invicto-dark/50 transition-colors duration-300">
               <Image 
                 src="/images/conjunto.jpg" 
